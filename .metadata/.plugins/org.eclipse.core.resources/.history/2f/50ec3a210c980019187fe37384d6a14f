@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itzl.dao.BooksDao">
+ 	<select id="queryBookById" parameterType="int" resultType="books">
+ 		select * from books,books_type where book_id=#{bookId} and type_id=book_num
+ 	</select>
+ 	
+ 	<delete id="deleteBooks" parameterType="int">
+  	delete from books where book_id=#{bookId}
+  </delete>
+
+	<insert id="addToBooks" parameterType="books">
+		insert into books(book_id,book_num,book_name,book_author,book_day,book_press,book_stock) 
+			values(#{bookId},#{bookNum},#{bookName},#{bookAuthor},#{bookDay},#{bookPress},#{bookStock})
+	</insert>
+	
+	<select id="queryBookByFy" parameterType="fy" resultType="books">
+		select * from (select n.*,rownum r from (select * from books bs,books_type bt where bs.book_num=bt.type_id
+				<where>
+					<if test="query!=null">
+						<if test="query.qbookName!=null and query.qbookName!=''">
+							and bs.book_name like concat('%',concat(#{query.qbookName},'%'))
+						</if>
+						<if test="query.qbookDayStrat!=null and query.qbookDayStrat!=''">
+							and bs.book_day>#{query.qbookDayStrat}
+						</if>
+						
+						<if test="query.qbookDayEnd!=null and query.qbookDayEnd!=''">
+							and bs.book_day<![CDATA[<]]>#{query.qbookDayEnd}
+						</if>
+						<if test="query.qbookType!=null and query.qbookType!=''">
+						
+							and bt.type_name like concat('%',concat(#{query.qbookType},'%')) and bt.type_id=bs.book_num
+						</if>
+					</if>
+				</where>
+		)n) where r between #{startRows} and #{endRows}
+	</select>
+	
+	<select id="queryRowsCount" parameterType="query" resultType="int">
+		select count(*) from books
+			<where>
+	 			<if test="qbookName!=null and qbookName!=''">
+	 				and book_name like concat('%',concat(#{qbookName},'%'))
+	 			</if>
+	 			<if test="qbookDayStrat!=null">
+	 				and book_day>#{qbookDayStrat}
+	 			</if>
+	 			<if test="qbookDayEnd!=null">
+	 				and book_day<![CDATA[<]]>#{qbookDayEnd}
+	 			</if>
+	 		</where>
+	</select>
+	
+	<update id="updateBooks" parameterType="books">
+		update books 
+			<trim prefix="set" suffixOverrides=",">
+				<if test="bookName!=null and bookName!=''">
+					book_name=#{bookName},
+				</if>
+				<if test="bookAuthor!=null and bookAuthor!=''">
+					book_author=#{bookAuthor},
+				</if>
+				<if test="bookPress!=null and bookPress!=''">
+					book_press=#{bookPress},
+				</if>
+				<if test="bookNum!=null">
+					book_num=#{bookNum},
+				</if>
+				<if test="bookDay!=null">
+					book_day=#{bookDay},
+				</if>
+				<if test="bookStock!=null">
+					book_stock=#{bookStock},
+				</if>
+			</trim>
+		where book_id = #{bookId}
+	</update>
+	
+</mapper>

@@ -1,0 +1,14 @@
+package com.itzl.service.impl;
+
+import com.itzl.pojo.BookType;
+import com.itzl.service.BookTypeService;
+
+public class BookTypeServiceImpl implements BookTypeService {
+
+	@Override
+	public BookType queryBookType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

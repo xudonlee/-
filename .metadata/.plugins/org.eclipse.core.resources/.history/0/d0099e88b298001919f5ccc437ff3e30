@@ -1,0 +1,16 @@
+package com.itzl.service;
+
+import java.util.List;
+
+import com.itzl.pojo.Books;
+import com.itzl.pojo.FenYe;
+
+
+public interface BooksService {
+	public int deleteBooks(String[] ids);
+	public int addToBooks(Books books);
+    public int updateBooks(Books books);
+    public Books queryBookById(int id);
+    public List<Books> queryBookByFy(FenYe fy);
+    public Books queryBookType(String bookType);
+}

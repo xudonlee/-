@@ -1,0 +1,16 @@
+package com.itzl.dao;
+
+import java.util.List;
+
+import com.itzl.pojo.Books;
+import com.itzl.pojo.FenYe;
+import com.itzl.pojo.Query;
+
+public interface BooksDao {
+	public int deleteNews(int id);
+	public int addToNews(Books books);
+    public int updateNews(Books books);
+    public Books queryNewsById(int id);
+    public List<Books> queryNewsByFy(FenYe fy);
+    public int queryRowsCount(Query query);
+}

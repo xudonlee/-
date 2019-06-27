@@ -1,0 +1,5 @@
+package com.itzl.dao;
+
+public interface BookTypeDao {
+
+}

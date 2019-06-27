@@ -1,0 +1,29 @@
+package com.itzl.controller;
+
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.itzl.pojo.Books;
+import com.itzl.pojo.FenYe;
+import com.itzl.service.BooksService;
+
+@Controller
+@RequestMapping("/book")
+public class BooksController {
+	
+	@Autowired
+	private BooksService bs;
+	@RequestMapping(method = RequestMethod.GET)
+	public String bookList(Map<String,Object> map,FenYe fy) {
+		List<Books> books = bs.queryBookByFy(fy);
+		map.put("books", books);
+		return "bookslist";
+	
+	}
+
+}

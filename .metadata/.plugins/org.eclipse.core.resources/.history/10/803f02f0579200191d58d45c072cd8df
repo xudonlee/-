@@ -1,0 +1,5 @@
+package com.itzl.service;
+
+public interface BankService {
+
+}

@@ -1,0 +1,10 @@
+//com.springsource.config.ui.prefs.activePageIndex\:/SSM1.0/src/springIOC.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
+//com.springsource.config.ui.prefs.activePageIndex\:/springAOP/src/SpringAOP.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage id\="com.springsource.sts.config.ui.editors.namespaces" index\="1" kind\="formPage"/>
+//com.springsource.config.ui.prefs.activePageIndex\:/springAOP/src/SpringAop.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
+//com.springsource.config.ui.prefs.activePageIndex\:/springIoc/src/springIoc.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
+//com.springsource.config.ui.prefs.activePageIndex\:/springMybatis/src/springIOC.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
+//com.springsource.config.ui.prefs.activePageIndex\:/springaop/src/springAOP.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
+//com.springsource.config.ui.prefs.activePageIndex\:/testBank/src/springAop.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
+//com.springsource.config.ui.prefs.activePageIndex\:/testBank/src/springIOC.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
+com.springsource.config.ui.prefs.tabs.dialog=always
+eclipse.preferences.version=1

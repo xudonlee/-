@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<!-- 用来配置连接池对象 -->
+  	<settings>
+  		<setting name="jdbcTypeForNull" value="NULL"/>
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+	</settings>
+	<typeAliases>
+		<typeAlias type="com.itzl.pojo.User" alias="user"/>
+		<typeAlias type="com.itzl.pojo.Books" alias="books"/>
+		<typeAlias type="com.itzl.pojo.Query" alias="query"/>
+		<typeAlias type="com.itzl.pojo.FenYe" alias="fy"/>
+		<typeAlias type="com.itzl.pojo.Power" alias="power"/>
+		<typeAlias type="com.itzl.pojo.Role" alias="role"/>
+		<typeAlias type="com.itzl.pojo.BookType" alias="booktype"/>
+	</typeAliases>
+	
+	<!-- 引用mapper映射文件 -->
+	<mappers>
+		<mapper resource="com/itzl/dao/UserDaoMapper.xml"/>
+		<mapper resource="com/itzl/dao/BooksDaoMapper.xml"/>
+		<mapper resource="com/itzl/dao/RoleDaoMapper.xml"/>
+		<mapper resource="com/itzl/dao/PowerDaoMapper.xml"/>
+	</mappers>
+</configuration>

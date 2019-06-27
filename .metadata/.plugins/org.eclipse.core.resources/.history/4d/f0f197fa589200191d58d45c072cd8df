@@ -1,0 +1,13 @@
+package com.itzl.service.impl;
+
+import com.itzl.service.PersonService;
+
+public class PersonServiceImpl implements PersonService {
+
+	@Override
+	public int zhuanZhang() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

@@ -1,0 +1,10 @@
+package com.itzl.service;
+
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
+import com.itzl.pojo.Books;
+
+
+public interface FileUploadService {
+	public Books newsUpload(Books news,CommonsMultipartFile img)throws Exception;
+}

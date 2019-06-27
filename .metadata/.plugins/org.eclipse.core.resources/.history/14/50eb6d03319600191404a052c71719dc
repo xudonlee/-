@@ -1,0 +1,38 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+</head>
+<body>
+		<form action="scope/login" method="post">
+		姓名：<input type="text" name="userName" />
+		密码：<input type="password" name="pwd"/>
+		<input type="submit" value="登录"/>
+		</form>
+		
+		<form action="scope/login" method="post">
+			<input type="hidden" name="_method" value="delete"/>
+		<input type="checkbox" name="ids" value="1" />1
+		<input type="checkbox" name="ids" value="2"/>2
+		<input type="checkbox" name="ids" value="3"/>3
+		<input type="submit" value="删除"/>
+		</form>
+		
+		<form action="scope/login" method="post">
+		<input type="hidden" name="_method" value="put"/>
+		<input type="submit" value="添加"/>
+		</form>
+		
+		<form action="scope/login" method="post">
+		姓名：<input type="text" name="userName" />
+		密码：<input type="password" name="pwd"/>
+		<input type="submit" value="修改"/>
+		</form>
+</body>
+</html>

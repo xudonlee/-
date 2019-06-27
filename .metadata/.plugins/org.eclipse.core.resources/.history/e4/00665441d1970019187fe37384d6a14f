@@ -1,0 +1,68 @@
+package com.itzl.pojo;
+
+import java.util.Date;
+
+import org.springframework.context.annotation.Scope;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.stereotype.Component;
+@Component
+@Scope("prototype")
+public class Books {
+	private Integer bookId;
+	private Integer bookNum;
+	private String bookName;
+	private String bookAuthor;
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	private Date bookDay;
+	private String bookPress;
+	private Integer bookStock;
+	
+	public Integer getBookId() {
+		return bookId;
+	}
+	public void setBookId(Integer bookId) {
+		this.bookId = bookId;
+	}
+	public Integer getBookNum() {
+		return bookNum;
+	}
+	public void setBookNum(Integer bookNum) {
+		this.bookNum = bookNum;
+	}
+	public String getBookName() {
+		return bookName;
+	}
+	public void setBookName(String bookName) {
+		this.bookName = bookName;
+	}
+	public String getBookAuthor() {
+		return bookAuthor;
+	}
+	public void setBookAuthor(String bookAuthor) {
+		this.bookAuthor = bookAuthor;
+	}
+	public Date getBookDay() {
+		return bookDay;
+	}
+	public void setBookDay(Date bookDay) {
+		this.bookDay = bookDay;
+	}
+	public String getBookPress() {
+		return bookPress;
+	}
+	public void setBookPress(String bookPress) {
+		this.bookPress = bookPress;
+	}
+	public Integer getBookStock() {
+		return bookStock;
+	}
+	public void setBookStock(Integer bookStock) {
+		this.bookStock = bookStock;
+	}
+	@Override
+	public String toString() {
+		return "Books [bookId=" + bookId + ", bookNum=" + bookNum + ", bookName=" + bookName + ", bookAuthor="
+				+ bookAuthor + ", bookDay=" + bookDay + ", bookPress=" + bookPress + ", bookStock=" + bookStock + "]";
+	}
+	
+}

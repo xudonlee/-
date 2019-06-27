@@ -1,0 +1,23 @@
+package com.itzl.pojo;
+
+import java.util.Date;
+
+import org.springframework.context.annotation.Scope;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.stereotype.Component;
+@Component
+@Scope("prototype")
+public class Query {
+
+	
+	
+	
+		private String qbookName;
+		private String qbookType;
+		@DateTimeFormat(pattern="yyyy-MM-dd")
+		private Date qbookDayStrat;
+		@DateTimeFormat(pattern="yyyy-MM-dd")
+		private Date qbookDayEnd;
+		
+
+}

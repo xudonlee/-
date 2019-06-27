@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itzl.dao.BooksDao">
+ 	<select id="queryBookById" parameterType="int" resultType="books">
+ 		select * from books where book_id=#{bookId}
+ 	</select>
+ 	
+ 	<delete id="deleteBooks" parameterType="int">
+  	delete from books where book_id=#{bookId}
+  </delete>
+
+	<insert id="addToBooks" parameterType="books">
+		insert into books(book_id,book_num,book_name,book_author,book_day,book_press,book_stock) 
+			values(#{newId},#{newTitle},#{newContext},#{newEditor},#{newDate},#{newPic})
+	</insert>
+	
+	<select id="queryBookByFy" parameterType="fy" resultType="books">
+		select * from (select n.*,rownum r from (select * from news
+				<where>
+					<if test="query!=null">
+						<if test="query.qNewsTitle!=null and query.qNewsTitle!=''">
+							and new_title like concat('%',concat(#{query.qNewsTitle},'%'))
+						</if>
+						<if test="query.qNewsDateStart!=null and query.qNewsDateStart!=''">
+							and new_date>#{query.qNewsDateStart}
+						</if>
+						<if test="query.qNewsDateEnd!=null and query.qNewsDateEnd!=''">
+							and new_date<![CDATA[<]]>#{query.qNewsDateEnd}
+						</if>
+					</if>
+				</where>
+		)n) where r>#{startRows} and r<![CDATA[<]]>=#{endRows}
+	</select>
+	
+	<select id="queryRowsCount" parameterType="query" resultType="int">
+		select count(*) from news
+			<where>
+	 			<if test="qNewsTitle!=null and qNewsTitle!=''">
+	 				and new_title like concat('%',concat(#{qNewsTitle},'%'))
+	 			</if>
+	 			<if test="qNewsDateStart!=null">
+	 				and new_date>#{qNewsDateStart}
+	 			</if>
+	 			<if test="qNewsDateEnd!=null">
+	 				and new_date<![CDATA[<]]>#{qNewsDateEnd}
+	 			</if>
+	 		</where>
+	</select>
+	
+	<update id="updateNews" parameterType="news">
+		update news 
+			<trim prefix="set" suffixOverrides=",">
+				<if test="newId!=null">
+					new_id=#{newId},
+				</if>
+				<if test="newTitle!=null and newTitle!=''">
+					new_title=#{newTitle},
+				</if>
+				<if test="newContext!=null and newContext!=''">
+					new_context=#{newContext},
+				</if>
+				<if test="newEditor!=null and newEditor!=''">
+					new_editor=#{newEditor},
+				</if>
+				<if test="newDate!=null">
+					new_date=#{newDate},
+				</if>
+				<if test="newPic!=null and newPic!=''">
+					new_pic=#{newPic},
+				</if>
+			</trim>
+		where id = #{id}
+	</update>
+	
+</mapper>

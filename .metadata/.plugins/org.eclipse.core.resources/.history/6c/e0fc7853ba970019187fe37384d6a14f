@@ -1,0 +1,24 @@
+package com.itzl.service;
+
+import java.util.List;
+
+import com.itzl.pojo.Books;
+import com.itzl.pojo.FenYe;
+import com.itzl.pojo.News;
+import com.itzl.pojo.Query;
+
+public interface BooksService {
+	public int deleteNews(int id);
+	public int addToNews(Books books);
+    public int updateNews(Books books);
+    public Books queryNewsById(int id);
+    //public List<News> queryNewsByLike(Query query);
+    
+	/*
+	 * 
+	 * 分页查询的方法
+	 * 
+	 */
+    public List<Books> queryNewsByFy(FenYe fy);
+    public int queryRowsCount(Query query);
+}

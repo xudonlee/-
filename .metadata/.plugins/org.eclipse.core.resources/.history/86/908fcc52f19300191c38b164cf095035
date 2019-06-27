@@ -1,0 +1,15 @@
+package com.itzl.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.servlet.ModelAndView;
+@Controller
+public class ScopeController {
+	
+	public ModelAndView login() {
+		
+		ModelAndView mv = new ModelAndView();
+		System.out.println();
+		
+		return mv;
+	}
+}

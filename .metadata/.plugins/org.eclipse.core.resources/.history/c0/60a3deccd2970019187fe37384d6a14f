@@ -1,0 +1,54 @@
+package com.itzl.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.itzl.dao.BooksDao;
+import com.itzl.pojo.Books;
+import com.itzl.pojo.FenYe;
+import com.itzl.pojo.Query;
+import com.itzl.service.BooksService;
+@Service
+public class BooksServiceImpl implements BooksService {
+	@Autowired
+	private BooksDao bd;
+	
+	@Override
+	public int deleteBooks(String[] ids) {
+		
+		return 0;
+	}
+
+	@Override
+	public int addToBooks(Books books) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int updateBooks(Books books) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Books queryBookById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Books> queryBookByFy(FenYe fy) {
+		
+		return null;
+	}
+
+	@Override
+	public int queryRowsCount(Query query) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

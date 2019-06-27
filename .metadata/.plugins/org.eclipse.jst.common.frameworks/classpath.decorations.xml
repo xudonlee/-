@@ -1,0 +1,28 @@
+<classpath>
+  <container id="bookstore!org.eclipse.jst.j2ee.internal.web.container">
+    <entry id="G:/sts4/bookstore/WebContent/WEB-INF/lib/spring-web-4.1.6.RELEASE.jar">
+      <source-attachment-path>C:/Users/xudon/AppData/Local/Temp/.org.sf.feeling.decompiler1561598202805/source/spring-web-4.1.6.RELEASE-sources.jar</source-attachment-path>
+    </entry>
+    <entry id="G:/sts4/bookstore/WebContent/WEB-INF/lib/spring-context-4.1.6.RELEASE.jar">
+      <source-attachment-path>C:/Users/xudon/AppData/Local/Temp/.org.sf.feeling.decompiler1560996156390/source/spring-context-4.1.6.RELEASE-sources.jar</source-attachment-path>
+    </entry>
+  </container>
+  <container id="testBankTx!org.eclipse.jst.j2ee.internal.web.container">
+    <entry id="G:/sts4/testBankTx/WebContent/WEB-INF/lib/spring-jdbc-4.1.6.RELEASE.jar">
+      <source-attachment-path>C:/Users/xudon/AppData/Local/Temp/.org.sf.feeling.decompiler1560999932524/source/spring-jdbc-4.1.6.RELEASE-sources.jar</source-attachment-path>
+    </entry>
+  </container>
+  <container id="testBank!org.eclipse.jst.j2ee.internal.web.container">
+    <entry id="G:/sts4/testBank/WebContent/WEB-INF/lib/spring-context-4.1.6.RELEASE.jar">
+      <source-attachment-path>C:/Users/xudon/AppData/Local/Temp/.org.sf.feeling.decompiler1560996156390/source/spring-context-4.1.6.RELEASE-sources.jar</source-attachment-path>
+    </entry>
+    <entry id="G:/sts4/testBank/WebContent/WEB-INF/lib/spring-beans-4.1.6.RELEASE.jar">
+      <source-attachment-path>C:/Users/xudon/AppData/Local/Temp/.org.sf.feeling.decompiler1560996156390/source/spring-beans-4.1.6.RELEASE-sources.jar</source-attachment-path>
+    </entry>
+  </container>
+  <container id="springMVC!org.eclipse.jst.j2ee.internal.web.container">
+    <entry id="G:/sts4/springMVC/WebContent/WEB-INF/lib/spring-web-4.1.6.RELEASE.jar">
+      <source-attachment-path>C:/Users/xudon/AppData/Local/Temp/.org.sf.feeling.decompiler1561344122817/source/spring-web-4.1.6.RELEASE-sources.jar</source-attachment-path>
+    </entry>
+  </container>
+</classpath>

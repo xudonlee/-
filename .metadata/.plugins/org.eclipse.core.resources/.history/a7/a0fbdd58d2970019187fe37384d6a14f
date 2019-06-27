@@ -1,0 +1,76 @@
+package com.itzl.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.itzl.service.NewsService;
+import com.itzl.dao.NewsDao;
+import com.itzl.pojo.FenYe;
+import com.itzl.pojo.News;
+
+@Service
+public class NewsServiceImpl implements NewsService {
+	@Autowired
+	private NewsDao nd;
+	@Override
+	public List<News> queryNewsByFy(FenYe fy) {
+		
+		fy.setRowsCount(nd.queryRowsCount(fy.getQuery()));
+  		
+  	
+  		if(fy.getPage()==null){
+  			fy.setPage(1);
+  		}
+  		
+  		if(fy.getPage()<1){
+  			fy.setPage(1);
+  		}
+  		if(fy.getPage()>fy.getPageCount()&&fy.getPageCount()>0){
+  			fy.setPage(fy.getPageCount());
+  		} 
+  		fy.setPage(fy.getPage());
+  		fy.setQuery(fy.getQuery());
+		
+  		List<News> ns=nd.queryNewsByFy(fy);
+  		
+  		return ns;
+	}
+	@Override
+	public int deleteNewsById(String[] ids) {
+		int flag=1;
+			for (String str : ids) {
+				nd.deleteNews(new Integer(str))
+				
+			}
+			
+	
+		return flag;
+	}
+	@Override
+	public int addNews(News news) {
+		
+		int flag= nd.addToNews(news);
+		 
+		 return flag;
+				 
+	}
+	@Override
+	public News queryNewsById(int id) {
+		
+		
+		News ns = nd.queryNewsById(id);
+		
+		return ns;
+		
+	}
+	@Override
+	public int updateNewsById(News ns) {
+		
+		int flag= nd.updateNews(ns);
+		
+		return flag;
+	}
+
+}

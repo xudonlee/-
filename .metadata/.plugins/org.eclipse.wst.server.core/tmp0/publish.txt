@@ -1,0 +1,4 @@
+#Tomcat publish data
+#Thu Jun 27 12:00:48 CST 2019
+org.eclipse.jst.jee.server\:bookstore=G\:\\Program Files\\Apache Software Foundation\\apache-tomcat-8.5.41\\webapps\\bookstore
+org.eclipse.jst.jee.server\:/binary\:G\:\\sts4\\bookstore\\WebContent\\WEB-INF\\lib\\spring-web-4.1.6.RELEASE.jar=G\:\\Program Files\\Apache Software Foundation\\apache-tomcat-8.5.41\\webapps\\bookstore\\WEB-INF\\lib\\spring-web-4.1.6.RELEASE.jar

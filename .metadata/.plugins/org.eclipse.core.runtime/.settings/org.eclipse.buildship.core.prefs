@@ -1,0 +1,10 @@
+arguments=
+auto.sync=false
+eclipse.preferences.version=1
+gradle.build.scans=false
+gradle.distribution=GRADLE_DISTRIBUTION(LOCAL_INSTALLATION(G\:\\apache\\gradle\\gradle-5.4.1))
+gradle.offline.mode=false
+java.home=G\:\\Program Files\\Java\\jdk1.8.0_202
+jvm.arguments=
+show.console.view=false
+show.executions.view=true

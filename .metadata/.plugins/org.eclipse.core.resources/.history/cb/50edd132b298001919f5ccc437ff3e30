@@ -1,0 +1,7 @@
+package com.itzl.dao;
+
+import com.itzl.pojo.BookType;
+
+public interface BookTypeDao {
+
+}

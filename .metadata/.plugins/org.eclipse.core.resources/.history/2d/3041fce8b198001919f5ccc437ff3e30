@@ -1,0 +1,8 @@
+package com.itzl.pojo;
+
+public class BookType {
+	private Integer typeId;
+	private String typeNum;
+	private String typeName;
+
+}

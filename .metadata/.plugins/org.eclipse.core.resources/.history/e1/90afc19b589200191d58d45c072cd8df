@@ -1,0 +1,19 @@
+package com.itzl.service.impl;
+
+import com.itzl.service.BankService;
+
+public class BankServiceImpl implements BankService {
+
+	@Override
+	public int getQian() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int putQian() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

@@ -1,0 +1,39 @@
+package com.itzl.controller;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.websocket.server.PathParam;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.itzl.pojo.User;
+@Controller
+@RequestMapping("/scope")
+public class ScopeController {
+	
+	@RequestMapping(value="/news",method = RequestMethod.DELETE)
+	public String deleteAllNews(HttpServletRequest req) {
+		
+		String[] ids = req.getParameterValues("ids");
+		for (String id : ids) {
+			System.out.println(id);
+		}
+		
+		return "redirect:/main.jsp";
+	}
+	
+	@RequestMapping(value = "/news",method = RequestMethod.PUT)
+	public String addNews() {
+		System.out.println("添加新闻成功。。。");
+		return "redirect:/main.jsp";
+	}
+	
+	@RequestMapping(value = "/news{id}",method = RequestMethod.PUT)
+	public String updateNews(@PathVariable int id) {
+		System.out.println(id);
+		return "redirect:/main.jsp";
+	}
+}

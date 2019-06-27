@@ -1,0 +1,19 @@
+package com.itzl.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.itzl.service.FileUploadService;
+import com.itzl.service.NewsService;
+@Controller
+@RequestMapping("/news")
+public class NewsController {
+	@Autowired
+	private NewsService ns;
+	@Autowired
+	private FileUploadService fs;
+	public String newList() {
+		
+	}
+}

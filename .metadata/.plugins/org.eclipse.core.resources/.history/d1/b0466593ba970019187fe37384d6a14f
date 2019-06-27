@@ -1,0 +1,48 @@
+package com.itzl.service.impl;
+
+import java.util.List;
+
+import com.itzl.pojo.Books;
+import com.itzl.pojo.FenYe;
+import com.itzl.pojo.Query;
+import com.itzl.service.BooksService;
+
+public class BooksServiceImpl implements BooksService {
+
+	@Override
+	public int deleteNews(int id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int addToNews(Books books) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int updateNews(Books books) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Books queryNewsById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Books> queryNewsByFy(FenYe fy) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int queryRowsCount(Query query) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

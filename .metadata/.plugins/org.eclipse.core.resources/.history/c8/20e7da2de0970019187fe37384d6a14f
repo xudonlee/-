@@ -1,0 +1,195 @@
+<%@page import="com.itzl.pojo.FenYe"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="com.itzl.pojo.Query"%>
+<%@page import="com.itzl.pojo.Books"%>
+
+<%@page import="com.itzl.dao.BooksDao"%>
+<%@page import="com.itzl.pojo.User"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <base href="<%=basePath%>">
+    <title>今日新闻</title>
+   
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">    
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+	<meta http-equiv="description" content="This is my page">
+	 <!-- 1. 导入CSS的全局样式 -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- 2. jQuery导入，建议使用1.9以上的版本 -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <!-- 3. 导入bootstrap的js文件 -->
+    <script src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="<%=basePath%>/ckeditor/ckeditor.js"></script>
+  	<script type="text/javascript" src="<%=basePath%>/My97DatePicker/WdatePicker.js"></script>
+	<script type="text/javascript">
+	
+	
+	function allSelect(check_v, checkname)
+    {
+    var v_item = document.getElementsByName(check_v);
+    var items = document.getElementsByName(checkname);
+    for (var i = 0; i < items.length; ++i)
+    {
+        if (v_item[0].checked)
+        {
+            items[i].checked = true;
+        }
+        else
+        {
+            items[i].checked = false;
+        }
+    }
+}
+
+function singleSelect(check_v, checkname)
+    {
+    var v_item = document.getElementsByName(check_v);
+    var items = document.getElementsByName(checkname);
+    var childStatus = true;
+    for (var i = 0; i < items.length; ++i)
+    {
+        childStatus = (childStatus && items[i].checked);
+    }
+    if (childStatus)
+    {
+        v_item[0].checked = true;
+    }
+    else
+    {
+        v_item[0].checked = false;
+    }
+}
+function del(obj){
+	var flag=confirm('是否确定删除这本书??');
+	if(!flag){
+		return false;
+	}
+	$("#f2").attr("method","post");
+	$("#f2").attr("action","book");
+	$("#heiddenIds").val(obj.value);
+	//设置_method对应的value值
+	$("#_method").val("delete");
+	//提交表单
+	$("#f2").submit();
+}
+function allDel(){
+	var flag=confirm('是否确定全部删除??');
+	if(!flag){
+		return false;
+	}
+	$("#heiddenIds").remove();
+	$("#f2").attr("method","post");
+	$("#_method").val("delete");
+	$("#f2").attr("action","book");
+	$("#f2").submit();
+}
+function upd(obj){
+	$("#_method").remove();
+	$("#f2").attr("method","get");
+	$("#f2").attr("action","news/"+obj.value);
+	$("#f2").submit();
+}
+	
+	
+	
+	</script>
+  </head>
+  <body>
+  		<!-- 新闻页面 -->
+  		<div align="center">
+  				<form id="f1" action="news" method="get">
+  				新闻标题:<input type="text" id="news_title" name="qNewsTitle" value="${fenYe.query.qNewsTitle}"/>
+  				开始时间:<input type="text" id="news_date" name="qNewsDateStart" onclick="WdatePicker()" class="Wdate" readonly="readonly" value="<fmt:formatDate value='${fenYe.query.qNewsDateStart }' pattern='yyyy-MM-dd'/>"/>
+  				结束时间:<input type="text" id="news_date" name="qNewsDateEnd" onclick="WdatePicker()" class="Wdate" readonly="readonly" value="<fmt:formatDate value='${fenYe.query.qNewsDateEnd }' pattern='yyyy-MM-dd'/>"/>
+  					<input type="submit" value="搜索"/><p>
+				</form>
+  			
+  			<form id="f2" action="news" method="post">
+  				<input type="hidden" id="_method" name="_method" value="delete"/>
+  				<input type="hidden" name="ids" id="heiddenIds">
+  				<table class="table table-striped table-dark">
+  				 <thead>
+  					<tr>
+  						<th scope="col"><input type="checkbox"  value="yes" name="checkbox_v" onclick="allSelect('checkbox_v', 'checkbox1')"/>全选</th>
+  						<th scope="col">新闻编号</th>
+  						<th scope="col">新闻标题</th>
+  						<th scope="col">新闻内容</th>
+  						<th scope="col">新闻作者</th>
+  						<th scope="col">新闻日期</th>
+  						<th scope="col">新闻图片</th>
+  						<th scope="col">删除新闻</th>
+  						<th scope="col">修改新闻</th>
+  					</tr>
+  				</thead>
+  					<c:forEach items="${news}" var="n">
+  				<tbody>
+  					<tr align="center">
+						<th scope="row"><input type="checkbox"  value="${n.id }" name="checkbox1" onclick="singleSelect('checkbox_v', 'checkbox1')"/></th>
+						<td>${n.newId }</td>
+						<td>${n.newTitle }</td>
+						<td>${n.newContext }</td>
+						<td>${n.newEditor }</td>
+						<td><fmt:formatDate value='${n.newDate }' pattern='yyyy-MM-dd'/></td>
+						<td>${n.newPic }</td>
+						<td><button type="button" class="btn btn-dark" value="${n.id }" onclick="return del(this)">删除</button></td>
+						<td><button type="button" class="btn btn-dark" value="${n.id }" onclick="upd(this)">修改</button></td>
+					</tr>
+				</tbody>
+  				</c:forEach>
+  					
+  					
+  				</table>
+  				<p>
+  				<button type="button" class="btn btn-primary" onclick="return allDel()">全部删除</button>
+  				<a href="addNews.jsp"><button type="button" class="btn btn-primary">添加新闻</button></a><p>
+  				
+  				<c:url var="newsPath" value="news">
+  					<c:param name="qNewsTitle" value="${fenYe.query.qNewsTitle }"></c:param>
+  					<c:param name="qNewsDateStart">
+  						<fmt:formatDate value="${fenYe.query.qNewsDateStart }" pattern='yyyy-MM-dd'/>
+  					
+  					</c:param>
+  					<c:param name="qNewsDateEnd">
+  						<fmt:formatDate value="${fenYe.query.qNewsDateEnd }" pattern='yyyy-MM-dd'/>
+  					</c:param>
+  				</c:url>
+  				
+  				
+  				<a href="${newsPath }&pg=1">首页</a>
+  				
+  				<c:choose>
+  					<c:when test="${fenYe.page==1 }">上一页</c:when>
+  					<c:otherwise>
+  						<a href="${newsPath }&pg=${fenYe.page-1}">上一页</a>
+  					</c:otherwise>
+  				</c:choose>
+  				
+  				<c:choose>
+  					<c:when test="${fenYe.page>=fenYe.pageCount }">下一页</c:when>
+  					<c:otherwise>
+  						<a href="${newsPath }&pg=${fenYe.page+1}">下一页</a>
+  					</c:otherwise>
+  				</c:choose>
+  				
+  				
+  				
+  				<a href="${newsPath }&pg=${fenYe.pageCount}">尾页</a>
+  				
+  				当前第${fenYe.page }页,一共${fenYe.pageCount }页
+  			</form>
+  		</div>	
+  	
+  		
+  </body>
+</html>

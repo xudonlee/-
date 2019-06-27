@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itzl.dao.UserDao">
+	
+	<resultMap type="user" id="u">
+		
+		<id column="id" property="id"/>
+		<result column="u_id" property="uId"/>
+		<result column="user_name" property="userName"/>
+		<result column="pwd" property="pwd"/>
+		
+		 <association property="role" column="r_id" javaType="role" select="com.itzl.dao.RoleDao.queryRoleByUserId"></association>
+	</resultMap>
+	
+	 <select id="loginUser" parameterType="user" resultMap="u">
+	 	select * from t_user where user_name=#{userName} and pwd=#{pwd}
+	 </select>
+	 <insert id="registered" parameterType="user">
+	 	insert into t_user(user_name,pwd) values(#{userName},#{pwd})
+	 </insert>
+	 <select id="getUserName" parameterType="String" resultType="user">
+	 	select user_name name from t_user where user_name=#{userName}
+	 </select>
+	 
+</mapper>

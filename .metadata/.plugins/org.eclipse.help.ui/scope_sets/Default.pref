@@ -1,0 +1,4 @@
+#Tue Jun 18 12:03:58 CST 2019
+__DEFAULT__=true
+org.eclipse.help.ui.localSearch.master=true
+org.eclipse.help.ui.localSearch.workingSet=Default
